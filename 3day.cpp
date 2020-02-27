@@ -47,9 +47,8 @@
 //! @see     DrawTree
 //!
 //}----------------------------------------------------------------------------------------------------------------
-
 void txMyTriangle (double x1, double y1, double x2, double y2, double x3, double y3,
-                    COLORREF color);
+                   COLORREF color);
 
 //{----------------------------------------------------------------------------------------------------------------
 //! @ingroup Drawing
@@ -61,9 +60,7 @@ void txMyTriangle (double x1, double y1, double x2, double y2, double x3, double
 //! @see     DrawTree
 //!
 //}----------------------------------------------------------------------------------------------------------------
-
 void DrawTree     (int posX, int posY);
-
 
 //{----------------------------------------------------------------------------------------------------------------
 //! @ingroup Drawing
@@ -75,7 +72,6 @@ void DrawTree     (int posX, int posY);
 //! @see     FlyPlane1
 //!
 //}----------------------------------------------------------------------------------------------------------------
-
 void DrawPlane1   (int posX, COLORREF color);
 
 //{----------------------------------------------------------------------------------------------------------------
@@ -88,7 +84,6 @@ void DrawPlane1   (int posX, COLORREF color);
 //! @see     FlyPlane2, LandingPlane
 //!
 //}----------------------------------------------------------------------------------------------------------------
-
 void DrawPlane2   (int posX, COLORREF color);
 
 //{----------------------------------------------------------------------------------------------------------------
@@ -105,7 +100,6 @@ void DrawPlane2   (int posX, COLORREF color);
 //! @see     RightturnBIRD, LeftturnBIRD, BIRDWingsUP
 //!
 //}----------------------------------------------------------------------------------------------------------------
-
 void DrawBIRD     (double X0, double Y0, double zoomX, double zoomY, COLORREF color_body,
                     COLORREF color_wing);
 
@@ -123,7 +117,6 @@ void DrawBIRD     (double X0, double Y0, double zoomX, double zoomY, COLORREF co
 //! @see     DrawBIRD, LeftturnBIRD, BIRDWingsUP
 //!
 //}----------------------------------------------------------------------------------------------------------------
-
 void RightturnBIRD(double X0, double Y0, double zoomX, double zoomY, COLORREF color_body,
                     COLORREF color_wing);
 
@@ -141,7 +134,6 @@ void RightturnBIRD(double X0, double Y0, double zoomX, double zoomY, COLORREF co
 //! @see     DrawBIRD, RightturnBIRD, BIRDWingsUP
 //!
 //}----------------------------------------------------------------------------------------------------------------
-
 void LeftturnBIRD (double X0, double Y0, double zoomX, double zoomY, COLORREF color_body,
                     COLORREF color_wing);
 
@@ -159,9 +151,9 @@ void LeftturnBIRD (double X0, double Y0, double zoomX, double zoomY, COLORREF co
 //! @see     DrawBIRD, RightturnBIRD, BIRDWingsUP
 //!
 //}----------------------------------------------------------------------------------------------------------------
-
-void BIRDWingsUP  (double X0, double Y0, double zoomX, double zoomY, COLORREF color_body,
+ void BIRDWingsUP  (double X0, double Y0, double zoomX, double zoomY, COLORREF color_body,
                     COLORREF color_wing);
+
 //! @}
 //}
 
@@ -180,7 +172,6 @@ void BIRDWingsUP  (double X0, double Y0, double zoomX, double zoomY, COLORREF co
 //! @see     DrawPlane1
 //!
 //}----------------------------------------------------------------------------------------------------------------
-
 void FlyPlane1    (int posX,int PAuse);
 
 //{----------------------------------------------------------------------------------------------------------------
@@ -193,7 +184,6 @@ void FlyPlane1    (int posX,int PAuse);
 //! @see     DrawPlane2
 //!
 //}----------------------------------------------------------------------------------------------------------------
-
 void FlyPlane2    (int posX,int PAuse);
 
 //{----------------------------------------------------------------------------------------------------------------
@@ -205,7 +195,6 @@ void FlyPlane2    (int posX,int PAuse);
 //! @see     DrawPlane2, Plane2
 //!
 //}----------------------------------------------------------------------------------------------------------------
-
 void LandingPlane (int PAuse);
 
 //{----------------------------------------------------------------------------------------------------------------
@@ -216,7 +205,6 @@ void LandingPlane (int PAuse);
 //! @param   PAuse Время задержки кадра в милисекундах.
 //!
 //}----------------------------------------------------------------------------------------------------------------
-
 void Titry_Samolet(int pos,int PAuse);
 //! @}
 //}
@@ -239,7 +227,6 @@ void Titry_Begin  (int pos,int PAuse);
 //! @see     DrawBIRD, BIRDUP, BIRDLEFT, BIRDRIGHT, BIRDMAX, BIRDMIN, BIRDVSE
 //!
 //}----------------------------------------------------------------------------------------------------------------
-
 void BIRDUP       (int posX, int posY,int PAuse);
 
 //{----------------------------------------------------------------------------------------------------------------
@@ -253,8 +240,6 @@ void BIRDUP       (int posX, int posY,int PAuse);
 //! @see     DrawBIRD, BIRDUP, BIRDLEFT, BIRDRIGHT, BIRDMAX, BIRDMIN, BIRDVSE
 //!
 //}----------------------------------------------------------------------------------------------------------------
-
-
 void BIRDLEFT     (int posX, int posY,int PAuse);
 
 //{----------------------------------------------------------------------------------------------------------------
@@ -269,7 +254,6 @@ void BIRDLEFT     (int posX, int posY,int PAuse);
 //! @see     DrawBIRD, BIRDUP, BIRDLEFT, BIRDRIGHT, BIRDMAX, BIRDMIN, BIRDVSE
 //!
 //}----------------------------------------------------------------------------------------------------------------
-
 void BIRDRIGHT    (int posX, int posY, int XCONST, int PAuse);
 
 //{----------------------------------------------------------------------------------------------------------------
@@ -279,7 +263,6 @@ void BIRDRIGHT    (int posX, int posY, int XCONST, int PAuse);
 //! @see     DrawBIRD, BIRDUP, BIRDLEFT, BIRDRIGHT, BIRDMAX, BIRDMIN, BIRDVSE
 //!
 //}----------------------------------------------------------------------------------------------------------------
-
 void BIRDMAX      ();
 
 //{----------------------------------------------------------------------------------------------------------------
@@ -289,7 +272,6 @@ void BIRDMAX      ();
 //! @see     DrawBIRD, BIRDUP, BIRDLEFT, BIRDRIGHT, BIRDMAX, BIRDMIN, BIRDVSE
 //!
 //}----------------------------------------------------------------------------------------------------------------
-
 void BIRDMIN      ();
 
 //{----------------------------------------------------------------------------------------------------------------
@@ -299,10 +281,11 @@ void BIRDMIN      ();
 //! @see     DrawBIRD, BIRDUP, BIRDLEFT, BIRDRIGHT, BIRDMAX, BIRDMIN, BIRDVSE
 //!
 //}----------------------------------------------------------------------------------------------------------------
-
 void BIRDVSE      ();
+
 //! @}
 //}
+
 //! @}
 //}
 //-----------------------------------------------------------------------------
