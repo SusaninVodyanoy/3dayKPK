@@ -355,7 +355,7 @@ void DrawPlane1   (int posX, COLORREF color)
 //}----------------------------------------------------------------------------
 
 //{----------------------------------------------------------------------------
-void DrawPlane2   (int posXPlane2, COLORREF color)
+void DrawPlane2   (int posX, COLORREF color)
    {
     txSetFillColor (color);
     txEllipse (200+posX,  40, 240+posX, 200);
