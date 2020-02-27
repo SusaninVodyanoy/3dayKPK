@@ -9,17 +9,10 @@
 //! -# @ref RightturnBIRD
 //! -# @ref LeftturnBIRD
 //! -# @ref BIRDWingsUP
-//! -# @ref FlyPlane1
-//! -# @ref FlyPlane2
-//! -# @ref LandingPlane
-//! -# @ref Titry_Samolet
-//! -# @ref Titry_Begin
-//! -# @ref BIRDUP
-//! -# @ref BIRDLEFT
-//! -# @ref BIRDRIGHT
-//! -# @ref BIRDMAX
-//! -# @ref BIRDMIN
-//! -# @ref BIRDVSE
+FlyPlane1
+FlyPlane2 
+LandingPlane
+Titry_Samolet
 
 #include "TXLib.h"
 
