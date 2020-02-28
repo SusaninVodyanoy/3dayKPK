@@ -93,7 +93,7 @@ while (!txGetAsyncKeyState (VK_ESCAPE) && !isTheEND)
 
         if (Distane( x, y, x3, y3) < r3+r-5)
             {
-                txSetColor (TX_BLACK);
+                txSetColor(TX_BLACK);
                 txTextOut (100, 50, "YOU'RE DEAD");
                 txTextOut (100, 100, "do it slacker3");
                 double dist = Distane( x, y, x3, y3);
