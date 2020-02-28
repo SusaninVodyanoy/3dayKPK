@@ -2,8 +2,10 @@
 #include "3day.h"
 
 void MoveBAll(double x  = 100, double y  = 100, double vx = 5, double vy = 7,
-              double ax =   0, double ay =   1, double dt = 1, double r  = 50);
+              double ax =   0, double ay =   1, double dt = 1);
+void PressKey_V(double vx, double vy);
 
+void DrawBAll (double x  = 100, double y  = 100, double r  = 50);
 //-----------------------------------------------------------------------------
 
 
@@ -29,16 +31,19 @@ while (!txGetAsyncKeyState (VK_ESCAPE))
     vx += ax*dt;
     x += vx*dt;
     y += vy*dt;
-    if (x+r > 800 && vx > 0) { vx = -vx;  }
-    if (x-r <   0 && vx < 0) { vx = -vx;  }
-    if (y+r > 600 && vy > 0) { vy = -vy;  }
-    if (y-r <   0 && vy < 0) { vy = -vy;  }
+    PressKey_V (&vx, &vy)
 
+    txSleep (100);
+    }
+}
+
+void DrawBAll (double, do
+
+void PressKey_V(ouble vx, double vy)
+{
     if (txGetAsyncKeyState (VK_LEFT))  vx--;
     if (txGetAsyncKeyState (VK_RIGHT)) vx++;
     if (txGetAsyncKeyState (VK_UP))    vy++;
     if (txGetAsyncKeyState (VK_DOWN))  vy--;
     if (txGetAsyncKeyState (VK_SPACE)) vy,vx=0; ;
-    txSleep (100);
-    }
 }
