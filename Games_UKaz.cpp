@@ -6,8 +6,8 @@ void MoveBAll    (double x  = 100, double y  = 100,
                   double x2 = 400, double y2 = 100,
                   double x3 = 500, double y3 = 100,
                   double vx =   1, double vy =   1,
-                  double vx1=   10, double vy1=   7,
-                  double vx2 =  7, double vy2 =  10,
+                  double vx1=  10, double vy1=   7,
+                  double vx2 =  7, double vy2 = 10,
                   double vx3=   1, double vy3=   7,
                   double ax =   0, double ay =   0, double dt = 1,
                   double r  = 10, double  r1=10,
@@ -54,7 +54,7 @@ while (!txGetAsyncKeyState (VK_ESCAPE) && !flag)
     txClear();
     DrawBAll    (x, y, r, TX_RED);
     PressKey_V  (&vx, &vy);
-    PhysicsBall ( &x,  &y,  &vx,  &vy, ax,  0, dt,   r);
+    PhysicsBall ( &x,  &y,  &vx,  &vy, 0,  0, dt,   r);
     DrawBAll    ( x1,  y1,   r1, TX_CYAN);
     PhysicsBall (&x1, &y1, &vx1, &vy1, ax, ay, dt, r1);
     DrawBAll    ( x2,  y2,   r2, TX_CYAN);
