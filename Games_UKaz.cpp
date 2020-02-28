@@ -48,9 +48,9 @@ void MoveBAll(double   x, double   y,
               double  r, double r1,
               double r2, double r3)
 {
-bool flag = false;
+bool isTheEND = false;
 
-while (!txGetAsyncKeyState (VK_ESCAPE) && !flag)
+while (!txGetAsyncKeyState (VK_ESCAPE) && !isTheEND)
     {
 
 
@@ -72,7 +72,7 @@ while (!txGetAsyncKeyState (VK_ESCAPE) && !flag)
                 txTextOut (100, 100, "do it slacker1");
                 double dist = Distane( x, y, x1, y1);
                 printf    ("%f",dist);
-                flag = true;
+                isTheEND = true;
             };
 
         DrawBAll    ( x2,  y2,   r2, TX_GREEN, "2");
@@ -85,7 +85,7 @@ while (!txGetAsyncKeyState (VK_ESCAPE) && !flag)
                 txTextOut (100, 100, "do it slacker2");
                 double dist = Distane( x, y, x2, y2);
                 printf ("%f",dist);
-                flag = true;
+                isTheEND = true;
             };
 
         DrawBAll    ( x3,  y3,   r3, TX_GREEN, "3");
@@ -98,7 +98,7 @@ while (!txGetAsyncKeyState (VK_ESCAPE) && !flag)
                 txTextOut (100, 100, "do it slacker3");
                 double dist = Distane( x, y, x3, y3);
                 printf ("%f",dist);
-                flag = true;
+                isTheEND = true;
             };
         txSleep     (20);
 
@@ -141,7 +141,7 @@ void PressKey_V(double* vx, double* vy,double* r)
     if (txGetAsyncKeyState (VK_RIGHT)) *vx = *vx + 1;
     if (txGetAsyncKeyState (VK_UP))    *vy = *vy + 1;
     if (txGetAsyncKeyState (VK_DOWN))  *vy = *vy - 1;
-    if (txGetAsyncKeyState (VK_SPACE)) *vy,  *vx = 0;
+    if (txGetAsyncKeyState (VK_SPACE)) *vy = 0,  *vx = 0;;
     if (txGetAsyncKeyState (VK_TAB))    *r =  *r + 1;
     if (txGetAsyncKeyState (VK_SHIFT))  *r =  *r - 1;
 }
