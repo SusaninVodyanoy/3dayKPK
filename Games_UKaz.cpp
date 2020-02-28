@@ -8,7 +8,7 @@ double vx, vy;
 double r;
 };
 
-void MoveBAll    (double ax =   0, double ay =   0, double dt = 1);
+void MoveBAll    (double ax = 0, double ay = 0, double dt = 1);
 
 void PressKey_V  (Sczchzshkharrrr* s);
 void PressKey    (Sczchzshkharrrr* s);
@@ -50,44 +50,44 @@ while (!txGetAsyncKeyState (VK_ESCAPE) && !isTheEND)
         txSetFillColor (TX_WHITE);
         txClear        ();
 
-        DrawBAll    (&s1,  TX_RED, "0");
+        DrawBAll    (&s1, TX_RED, "0");
         PressKey_V  (&s1);
         PhysicsBall (&s1, 0,  0, dt);
 
-        DrawBAll    (&s2,  TX_GREEN, "1");
+        DrawBAll    (&s2,TX_GREEN, "1");
         PressKey    (&s2);
         PhysicsBall (&s2, 0,  0, dt);
 
         if (Distane( s1.x, s1.y, s2.x, s2.y) < s1.r+s2.r-5)
             {
-                txSetColor (TX_BLACK);
-                txTextOut (100, 50, "YOU'RE DEAD");
+                txSetColor(TX_BLACK);
+                txTextOut (100,  50, "YOU'RE DEAD");
                 txTextOut (100, 100, "do it slacker1");
                 double dist = Distane( s1.x, s1.y, s2.x, s2.y);
                 printf    ("%f",dist);
                 isTheEND = true;
             };
 
-        DrawBAll    (&s3,  TX_GREEN, "2");
+        DrawBAll    (&s3, TX_GREEN, "2");
         PhysicsBall (&s3, 0,  0, dt);
 
         if (Distane( s1.x, s1.y, s3.x, s3.y) < s1.r+s3.r-5)
             {
-                txSetColor (TX_BLACK);
-                txTextOut (100, 50, "YOU'RE DEAD");
+                txSetColor(TX_BLACK);
+                txTextOut (100,  50, "YOU'RE DEAD");
                 txTextOut (100, 100, "do it slacker2");
                 double dist = Distane( s1.x, s1.y, s3.x, s3.y);
                 printf    ("%f",dist);
                 isTheEND = true;
             };
 
-        DrawBAll    (&s4,  TX_GREEN, "3");
+        DrawBAll    (&s4, TX_GREEN, "3");
         PhysicsBall (&s4, 0,  0, dt);
 
         if (Distane( s1.x, s1.y, s4.x, s4.y) < s1.r+s4.r-5)
             {
-                txSetColor (TX_BLACK);
-                txTextOut (100, 50, "YOU'RE DEAD");
+                txSetColor(TX_BLACK);
+                txTextOut (100,  50, "YOU'RE DEAD");
                 txTextOut (100, 100, "do it slacker1");
                 double dist = Distane( s1.x, s1.y, s4.x, s4.y);
                 printf    ("%f",dist);
