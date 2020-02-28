@@ -1,33 +1,25 @@
 #include "TXLib.h"
 #include "3day.h"
 
-void MoveBAll    (double x  = 100, double y  = 100,
-                  double x1 = 300, double y1 = 100,
-                  double x2 = 400, double y2 = 100,
-                  double x3 = 500, double y3 = 100,
-                  double vx =   1, double vy =   1,
-                  double vx1=  10, double vy1=   7,
-                  double vx2 =  7, double vy2 = 10,
-                  double vx3=   1, double vy3=   7,
-                  double ax =   0, double ay =   0, double dt = 1,
-                  double r  = 10, double  r1=20,
-                  double r2 = 20, double  r3=20);
+struct Sczchzshkharrrr
+{
+double x, y;
+double vx, vy;
+double r;
+};
 
-void PressKey_V  (double* vx, double* vy, double* r);
-void PressKey    (double* vx, double* vy);
+void MoveBAll    (double ax =   0, double ay =   0, double dt = 1);
 
-void DrawBAll    (double x, double y, double r,COLORREF color, char numb[2]);
+void PressKey_V  (Sczchzshkharrrr* s);
+void PressKey    (Sczchzshkharrrr* s);
 
-void PhysicsBall (double* x, double* y, double* vx, double* vy,
-                  double ax, double ay, double dt, double r);
+void DrawBAll    (Sczchzshkharrrr s, COLORREF color, char numb[2]);
+
+void PhysicsBall (Sczchzshkharrrr* s,
+                  double ax, double ay, double dt);
 double Distane   (double x1, double y1, double x2, double y2);
 
-Struct Sczchzshkharrrr
-{
-Int x, y;
-Int vx, vy;
-Int r;
-}
+
 
 //-----------------------------------------------------------------------------
 
@@ -44,68 +36,62 @@ int main()
 
 //-----------------------------------------------------------------------------
 
-void MoveBAll(double   x, double   y,
-              double  x1, double  y1,
-              double  x2, double  y2,
-              double  x3, double  y3,
-              double  vx, double  vy,
-              double vx1, double vy1,
-              double vx2, double vy2,
-              double vx3, double vy3,
-              double ax, double ay, double dt,
-              double  r, double r1,
-              double r2, double r3)
+void MoveBAll(double ax, double ay, double dt)
 {
 bool isTheEND = false;
 
 while (!txGetAsyncKeyState (VK_ESCAPE) && !isTheEND)
     {
 
+        Sczchzshkharrrr s1 = {100, 200,5, 7, 10};
+        Sczchzshkharrrr s2 = {300, 200,5, 7, 20};
+        Sczchzshkharrrr s3 = {400, 200,5, 7, 20};
+        Sczchzshkharrrr s4 = {500, 200,5, 7, 20};
 
         txSetFillColor (TX_WHITE);
-        txClear();
+        txClear        ();
 
-        DrawBAll    (  x,   y,    r,  TX_RED, "0");
-        PressKey_V  (&vx, &vy,   &r               );
-        PhysicsBall ( &x,  &y,  &vx,  &vy, 0,  0, dt,   r);
+        DrawBAll    (s1.x,   s1.y,    s1.r,  TX_RED, "0");
+        PressKey_V  (&(s1->vx), &(s1->vy), &(s1->r)               );
+        PhysicsBall (&(s1->x),  &(s1->y),  &(s1->vx), &(s1->vy), &(s1->r), 0,  0, dt);
 
-        DrawBAll    ( x1,   y1,   r1, TX_GREEN, "1");
-        PressKey    (&vx1, &vy1               );
-        PhysicsBall ( &x1, &y1, &vx1, &vy1, ax, ay, dt, r1);
+        DrawBAll    (s2.x,   s2.y,    s2.r,  TX_RED, "1");
+        PressKey_V  (&(s2->vx), &(s2->vy), &(s2->r)               );
+        PhysicsBall (&(s2->x),  &(s2->y),  &(s2->vx), &(s2->vy), &(s2->r), 0,  0, dt);
 
-        if (Distane( x, y, x1, y1) < r1+r-5)
+        if (Distane( s1.x, s1.y, s2.x, s2.y) < s1.r+s2.r-5)
             {
                 txSetColor (TX_BLACK);
                 txTextOut (100, 50, "YOU'RE DEAD");
                 txTextOut (100, 100, "do it slacker1");
-                double dist = Distane( x, y, x1, y1);
+                double dist = Distane( s1.x, s1.y, s2.x, s2.y);
                 printf    ("%f",dist);
                 isTheEND = true;
             };
 
-        DrawBAll    ( x2,  y2,   r2, TX_GREEN, "2");
-        PhysicsBall (&x2, &y2, &vx2, &vy2, ax, ay, dt, r2);
+        DrawBAll    (s3.x,   s3.y,    s3.r,  TX_RED, "2");
+        PhysicsBall (&(s3->x),  &(s3->y),  &(s3->vx), &(s3->vy), &(s3->r), 0,  0, dt);
 
-        if (Distane( x, y, x2, y2) < r2+r-5)
+        if (Distane( s1.x, s1.y, s3.x, s3.y) < s1.r+s3.r-5)
             {
                 txSetColor (TX_BLACK);
                 txTextOut (100, 50, "YOU'RE DEAD");
                 txTextOut (100, 100, "do it slacker2");
-                double dist = Distane( x, y, x2, y2);
-                printf ("%f",dist);
+                double dist = Distane( s1.x, s1.y, s3.x, s3.y);
+                printf    ("%f",dist);
                 isTheEND = true;
             };
 
-        DrawBAll    ( x3,  y3,   r3, TX_GREEN, "3");
-        PhysicsBall (&x3, &y3, &vx3, &vy3, ax, ay, dt, r3);
+        DrawBAll    (s4.x,   s4.y,    s4.r,  TX_RED, "2");
+        PhysicsBall (&(s4->x),  &(s4->y),  &(s4->vx), &(s4->vy), &(s4->r), 0,  0, dt);
 
-        if (Distane( x, y, x3, y3) < r3+r-5)
+        if (Distane( s1.x, s1.y, s4.x, s4.y) < s1.r+s4.r-5)
             {
-                txSetColor(TX_BLACK);
+                txSetColor (TX_BLACK);
                 txTextOut (100, 50, "YOU'RE DEAD");
-                txTextOut (100, 100, "do it slacker3");
-                double dist = Distane( x, y, x3, y3);
-                printf ("%f",dist);
+                txTextOut (100, 100, "do it slacker1");
+                double dist = Distane( s1.x, s1.y, s4.x, s4.y);
+                printf    ("%f",dist);
                 isTheEND = true;
             };
         txSleep     (20);
@@ -114,7 +100,7 @@ while (!txGetAsyncKeyState (VK_ESCAPE) && !isTheEND)
 
 }
 
-void DrawBAll (double x, double y, double r, COLORREF color, char numb[2])
+void DrawBAll (Sczchzshkharrrr s, COLORREF color, char numb[2])
 {
 
     //txSetColor     (RGB (random(255), random(255), random(255)));
@@ -126,40 +112,40 @@ void DrawBAll (double x, double y, double r, COLORREF color, char numb[2])
     txTextOut (x-1, y-1, numb);
 }
 
-void PhysicsBall (double* x, double* y, double* vx, double* vy,
-                  double ax, double ay, double dt, double r)
+void PhysicsBall (Sczchzshkharrrr* s,
+                  double ax, double ay, double dt)
 {
 
 
     *vx += ax*dt;
-    *vy += ay*dt;
-    *x  += *vx*dt;
-    *y  += *vy*dt;
+    (*s.)vy += ay*dt;
+    (*s.)x  += s->vx*dt;
+    (*s.)y  += s->vy*dt;
 
-    if (*x+r > 800 && *vx > 0) { *vx = -*vx;  }
-    if (*x-r <   0 && *vx < 0) { *vx = -*vx;  }
-    if (*y+r > 600 && *vy > 0) { *vy = -*vy;  }
-    if (*y-r <   0 && *vy < 0) { *vy = -*vy;  }
+    if ((*s.)x+r > 800 && (*s.)vx > 0) { (*s.)vx = -s->vx;  }
+    if ((*s.)x-r <   0 && (*s.)vx < 0) { (*s.)vx = -s->vx;  }
+    if ((*s.)y+r > 600 && (*s.)vy > 0) { (*s.)vy = -s->vy;  }
+    if ((*s.)y-r <   0 && (*s.)vy < 0) { (*s.)vy = -s->vy;  }
     //return vx, vy, x, y;
 }
 
-void PressKey_V(double* vx, double* vy,double* r)
+void PressKey_V(Sczchzshkharrrr* s)
 {
-    if (txGetAsyncKeyState (VK_LEFT))  *vx = *vx - 1;
-    if (txGetAsyncKeyState (VK_RIGHT)) *vx = *vx + 1;
-    if (txGetAsyncKeyState (VK_UP))    *vy = *vy + 1;
-    if (txGetAsyncKeyState (VK_DOWN))  *vy = *vy - 1;
-    if (txGetAsyncKeyState (VK_SPACE)) *vy = 0,  *vx = 0;;
-    if (txGetAsyncKeyState (VK_TAB))    *r =  *r + 1;
-    if (txGetAsyncKeyState (VK_SHIFT))  *r =  *r - 1;
+    if (txGetAsyncKeyState (VK_LEFT))  (*s.)vx = s->vx - 1;
+    if (txGetAsyncKeyState (VK_RIGHT)) (*s.)vx = s->vx + 1;
+    if (txGetAsyncKeyState (VK_UP))    (*s.)vy = s->vy + 1;
+    if (txGetAsyncKeyState (VK_DOWN))  (*s.)vy = s->vy - 1;
+    if (txGetAsyncKeyState (VK_SPACE)) (*s.)vy = 0,  (*s.)vx = 0;;
+    if (txGetAsyncKeyState (VK_TAB))   (*s.)r =  s->r + 1;
+    if (txGetAsyncKeyState (VK_SHIFT)) (*s.)r =  s->r - 1;
 }
-void PressKey(double* vx, double* vy)
+void PressKey(Sczchzshkharrrr* s)
 {
-    if (txGetAsyncKeyState (0x41))  *vx = *vx - 1;
-    if (txGetAsyncKeyState (0x44))  *vx = *vx + 1;
-    if (txGetAsyncKeyState (0x57))  *vy = *vy + 1;
-    if (txGetAsyncKeyState (0x53))  *vy = *vy - 1;
-    if (txGetAsyncKeyState (VK_LCONTROL)) *vy = 0,  *vx = 0;
+    if (txGetAsyncKeyState (0x41))  (*s.)vx = s->vx - 1;
+    if (txGetAsyncKeyState (0x44))  (*s.)vx = s->vx + 1;
+    if (txGetAsyncKeyState (0x57))  (*s.)vy = s->vy + 1;
+    if (txGetAsyncKeyState (0x53))  (*s.)vy = (s->vy - 1;
+    if (txGetAsyncKeyState (VK_LCONTROL)) (*s.)vy = 0,  (*s.)vx = 0;
 }
 
 double Distane (double  x1, double  y1, double  x2, double  y2)
