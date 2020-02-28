@@ -21,6 +21,14 @@ void DrawBAll    (double x, double y, double r,COLORREF color, char numb[2]);
 void PhysicsBall (double* x, double* y, double* vx, double* vy,
                   double ax, double ay, double dt, double r);
 double Distane   (double x1, double y1, double x2, double y2);
+
+Struct Sczchzshkharrrr
+{
+Int x, y;
+Int vx, vy;
+Int r;
+}
+
 //-----------------------------------------------------------------------------
 
 
@@ -48,23 +56,23 @@ void MoveBAll(double   x, double   y,
               double  r, double r1,
               double r2, double r3)
 {
-bool flag = false;
+bool isTheEND = false;
 
-while (!txGetAsyncKeyState (VK_ESCAPE) && !flag)
+while (!txGetAsyncKeyState (VK_ESCAPE) && !isTheEND)
     {
 
 
         txSetFillColor (TX_WHITE);
         txClear();
-        
-        DrawBAll    (x, y, r, TX_RED, "0");
-        PressKey_V  (&vx, &vy, &r               );
+
+        DrawBAll    (  x,   y,    r,  TX_RED, "0");
+        PressKey_V  (&vx, &vy,   &r               );
         PhysicsBall ( &x,  &y,  &vx,  &vy, 0,  0, dt,   r);
-        
-        DrawBAll    ( x1,  y1,   r1, TX_GREEN, "1");
-        PressKey(&vx1, &vy1               );
-        PhysicsBall (&x1, &y1, &vx1, &vy1, ax, ay, dt, r1);
-        
+
+        DrawBAll    ( x1,   y1,   r1, TX_GREEN, "1");
+        PressKey    (&vx1, &vy1               );
+        PhysicsBall ( &x1, &y1, &vx1, &vy1, ax, ay, dt, r1);
+
         if (Distane( x, y, x1, y1) < r1+r-5)
             {
                 txSetColor (TX_BLACK);
@@ -72,11 +80,12 @@ while (!txGetAsyncKeyState (VK_ESCAPE) && !flag)
                 txTextOut (100, 100, "do it slacker1");
                 double dist = Distane( x, y, x1, y1);
                 printf    ("%f",dist);
-                flag = true;
+                isTheEND = true;
             };
-        
+
         DrawBAll    ( x2,  y2,   r2, TX_GREEN, "2");
         PhysicsBall (&x2, &y2, &vx2, &vy2, ax, ay, dt, r2);
+
         if (Distane( x, y, x2, y2) < r2+r-5)
             {
                 txSetColor (TX_BLACK);
@@ -84,20 +93,22 @@ while (!txGetAsyncKeyState (VK_ESCAPE) && !flag)
                 txTextOut (100, 100, "do it slacker2");
                 double dist = Distane( x, y, x2, y2);
                 printf ("%f",dist);
-                flag = true;
+                isTheEND = true;
             };
+
         DrawBAll    ( x3,  y3,   r3, TX_GREEN, "3");
         PhysicsBall (&x3, &y3, &vx3, &vy3, ax, ay, dt, r3);
+
         if (Distane( x, y, x3, y3) < r3+r-5)
             {
-                txSetColor (TX_BLACK);
+                txSetColor(TX_BLACK);
                 txTextOut (100, 50, "YOU'RE DEAD");
                 txTextOut (100, 100, "do it slacker3");
                 double dist = Distane( x, y, x3, y3);
                 printf ("%f",dist);
-                flag = true;
+                isTheEND = true;
             };
-    txSleep     (20);
+        txSleep     (20);
 
     }
 
@@ -138,7 +149,7 @@ void PressKey_V(double* vx, double* vy,double* r)
     if (txGetAsyncKeyState (VK_RIGHT)) *vx = *vx + 1;
     if (txGetAsyncKeyState (VK_UP))    *vy = *vy + 1;
     if (txGetAsyncKeyState (VK_DOWN))  *vy = *vy - 1;
-    if (txGetAsyncKeyState (VK_SPACE)) *vy,  *vx = 0;
+    if (txGetAsyncKeyState (VK_SPACE)) *vy = 0,  *vx = 0;;
     if (txGetAsyncKeyState (VK_TAB))    *r =  *r + 1;
     if (txGetAsyncKeyState (VK_SHIFT))  *r =  *r - 1;
 }
